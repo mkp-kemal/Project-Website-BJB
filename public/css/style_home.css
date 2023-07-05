@@ -1,0 +1,841 @@
+/* =========== Google Fonts ============ */
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
+
+/* =============== Globals ============== */
+* {
+    font-family: "Ubuntu", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --blue: #2a2185;
+    --blueMuda: #039dc0;
+    --white: #fff;
+    --gray: #f5f5f5;
+    --black1: #222;
+    --black2: #999;
+    --gradient: linear-gradient(to bottom right, #039dc0, #002895);
+    --gradientY: linear-gradient(to bottom right, #adc003, #002895);
+    /* --gradient: linear-gradient(to bottom right, #82e044, #58f3d1); */
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+}
+
+/* =============== Navigation ================ */
+.navigation {
+    position: fixed;
+    width: 300px;
+    height: 100%;
+    background: var(--gradient);
+    border-left: 10px solid;
+    border-image: var(--gradient) 1;
+    transition: 0.5s;
+    overflow: hidden;
+}
+
+.navigation.active {
+    width: 80px;
+}
+
+.navigation ul {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.navigation ul li {
+    position: relative;
+    width: 100%;
+    list-style: none;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+
+.navigation ul li:hover,
+.navigation ul li.hovered {
+    background-color: var(--white);
+}
+
+.navigation ul li:nth-child(1) {
+    margin-bottom: 40px;
+    pointer-events: none;
+}
+
+.navigation ul li a {
+    position: relative;
+    display: block;
+    width: 100%;
+    display: flex;
+    text-decoration: none;
+    color: var(--white);
+}
+
+.navigation ul li:hover a,
+.navigation ul li.hovered a {
+    color: var(--blue);
+}
+
+.navigation ul li a .icon {
+    position: relative;
+    display: block;
+    min-width: 60px;
+    height: 60px;
+    line-height: 75px;
+    text-align: center;
+}
+
+.navigation ul li a .icon ion-icon {
+    font-size: 1.75rem;
+}
+
+.navigation ul li a .title {
+    position: relative;
+    display: block;
+    padding: 0 10px;
+    height: 60px;
+    line-height: 60px;
+    text-align: start;
+    white-space: nowrap;
+}
+
+/* --------- curve outside ---------- */
+.navigation ul li:hover a::before,
+.navigation ul li.hovered a::before {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: -50px;
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    border-radius: 50%;
+    box-shadow: 35px 35px 0 10px var(--white);
+    pointer-events: none;
+}
+
+.navigation ul li:hover a::after,
+.navigation ul li.hovered a::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: -50px;
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    border-radius: 50%;
+    box-shadow: 35px -35px 0 10px var(--white);
+    pointer-events: none;
+}
+
+
+
+/* ===================== Main ===================== */
+.main {
+    position: absolute;
+    width: calc(100% - 300px);
+    left: 300px;
+    min-height: 100vh;
+    background: rgba(255, 0, 0, 0);
+    transition: 0.5s;
+    /* display: none; */
+}
+
+.main.active {
+    width: calc(100% - 80px);
+    left: 80px;
+}
+
+/* --------- header ---------- */
+.topbar {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.toggle {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+    cursor: pointer;
+}
+
+.user {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.user img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.sayNama {
+    font-size: 13px;
+    color: rgba(173, 173, 173, 0.628);
+}
+
+
+
+/* ======================= CARDS ====================== */
+.cardBox {
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 30px;
+}
+
+.cardBox .card {
+    position: relative;
+    background: var(--white);
+    padding: 30px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+}
+
+.cardBox .status {
+    background-color: #ffffff;
+}
+
+.cardBox .card .text {
+    position: relative;
+    font-weight: 500;
+    font-size: 1.1rem;
+    color: var(--black2);
+}
+
+.cardBox .card .cardName {
+    color: var(--black1);
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.cardBox .cardNameStatus {
+    color: var(--black1);
+    font-size: 1.1rem;
+    margin-top: 5px;
+}
+
+
+/* ======================= ICON ====================== */
+
+.cardBox .card .icon {
+    font-size: 3.5rem;
+    color: var(--black2);
+}
+
+.cardBox .iconDompet {
+    font-size: 3.5rem;
+    color: #2abbdd;
+}
+
+.cardBox .iconPemasukan {
+    font-size: 3.5rem;
+    color: green;
+}
+
+.cardBox .iconPengeluaran {
+    font-size: 3.5rem;
+    color: red;
+}
+
+.cardBox .iconStatus {
+    font-size: 3.5rem;
+    color: #D4AF37;
+}
+
+.Gold {
+    font-size: 3.5rem;
+    color: #D4AF37;
+}
+
+.Silver {
+    font-size: 3.5rem;
+    color: #5d5d61;
+}
+
+.cardBox .card:hover {
+    background: var(--gradient);
+}
+
+.cardBox .card:hover .text,
+.cardBox .card:hover .cardName,
+.cardBox .card:hover .icon {
+    color: var(--white);
+}
+
+/* ================== HISTORY ============== */
+.history {
+    position: relative;
+    width: 100%;
+    padding: 20px;
+}
+
+.history .recentOrders {
+    position: relative;
+    display: block;
+    min-height: 500px;
+    background: var(--white);
+    padding: 20px;
+    box-shadow: 0 7px 25px rgb(0, 0, 0);
+    border-radius: 20px;
+}
+
+.history .cardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.cardHeader h2 {
+    font-weight: 600;
+    color: var(--blue);
+}
+
+.cardHeader .btn {
+    position: relative;
+    padding: 5px 10px;
+    background: var(--gradient);
+    text-decoration: none;
+    color: var(--white);
+    border-radius: 6px;
+}
+
+.cardHeader .btn:hover {
+    background: var(--blue);
+}
+
+table th,
+table td {
+    width: calc(100% / 7);
+}
+
+
+.history table {
+    width: 100%;
+    height: 10px;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.history table thead td {
+    font-weight: 600;
+}
+
+.history .recentOrders table tr {
+    color: var(--black1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.327);
+}
+
+.history .recentOrders table tr:last-child {
+    border-bottom: none;
+}
+
+.history .recentOrders table tbody tr:hover {
+    background: var(--gradient);
+    color: var(--white);
+}
+
+.history .recentOrders table tr td {
+    padding: 10px;
+}
+
+.history .recentOrders table tr td:last-child {
+    text-align: end;
+}
+
+.history .recentOrders table tr td:nth-child(2) {
+    text-align: start;
+}
+
+.history .recentOrders table tr td:nth-child(3) {
+    text-align: center;
+}
+
+/* --------- algortima status history ---------- */
+.recentOrders .sukses {
+    padding: 2px 4px;
+    background: #8de02c;
+    color: var(--white);
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.recentOrders .gagal {
+    padding: 2px 4px;
+    background: #f00;
+    color: var(--white);
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.recentOrders .pending {
+    padding: 2px 4px;
+    background: rgb(0, 72, 255);
+    color: var(--white);
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* ====================== MODAL ====================== */
+.modal,
+.mod-wallet {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* Modal Content */
+.modal-content-trasnfer-bank,
+.modal-content-wallet {
+    border-radius: 20px;
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 60%;
+}
+
+.modal-content-pin {
+    border-radius: 20px;
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 60%;
+}
+
+/* Close Button */
+.close,
+.closebtn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus,
+.closebtn:hover,
+.closebtn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Style form */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 10px;
+}
+
+select,
+input[type="text"],
+input[type="password"],
+input[type="number"] {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #f2f2f2;
+}
+
+.btnTransfer {
+    background-color: var(--blueMuda);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+.btnTransfer:hover {
+    background-color: var(--blue);
+}
+
+
+
+/* =============== PROFILE SETTING ================  */
+.profile-container {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding-top: 20px;
+    display: none;
+}
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+.profile img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+}
+
+.profile h3 {
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.settings-form {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.settings-form h2 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #fff;
+}
+
+.submit-button,
+.cancel-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+.cancel-button {
+    background-color: #f44336;
+}
+
+.button-container {
+    text-align: center;
+}
+
+
+
+/* =============== MODAL ================ */
+/* .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 40%;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.modal-content h4 {
+    margin-top: 0;
+} */
+
+.green-text {
+    color: green;
+}
+
+.red-text {
+    color: red;
+}
+
+/* =============== CHATBOT ================  */
+.chatbot-modal {
+    display: none;
+    position: fixed;
+    z-index: 2;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.chatbot-modal-content {
+    background-color: #fefefe;
+    margin: 20% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 600px;
+    border-radius: 10px;
+
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.chatbot-modal #chatbox {
+    height: 300px;
+    overflow-y: scroll;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+.chat-bubble {
+    margin-bottom: 10px;
+    padding: 8px;
+    border-radius: 10px;
+}
+
+.chat-bubble.userChat {
+    background-color: #f1f1f1;
+    text-align: right;
+}
+
+.chat-bubble.bot {
+    background-color: #337ab7;
+    color: #fff;
+    text-align: left;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+
+
+/* =============== PAGINATION ================  */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.pagination ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pagination ul li {
+    margin: 0 5px;
+}
+
+.pagination ul li a {
+    display: inline-block;
+    padding: 6px 12px;
+    text-decoration: none;
+    color: #333333;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.pagination ul li.active a {
+    background-color: #0031ac;
+    color: #fff;
+}
+
+.pagination ul li.disabled a {
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+.pagination ul li a:hover {
+    background-color: #ccc;
+}
+
+
+
+
+
+/* =============== HASIL PENCARIAN ================  */
+#search-results table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#search-results th,
+#search-results td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+#search-results th {
+    background-color: #f5f5f5;
+}
+
+#search-results td {
+    text-align: center;
+}
+
+
+
+/* ====================== RESPONSIVE DESIGN ========================== */
+@media (max-width: 991px) {
+    .navigation {
+        left: -300px;
+    }
+
+    .navigation.active {
+        width: 300px;
+        left: 0;
+    }
+
+    .main {
+        width: 100%;
+        left: 0;
+    }
+
+    .main.active {
+        left: 300px;
+    }
+
+    .cardBox {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .history {
+        grid-template-columns: 1fr;
+    }
+
+    .recentOrders {
+        overflow-x: auto;
+    }
+
+    .status.inProgress {
+        white-space: nowrap;
+    }
+}
+
+@media (max-width: 480px) {
+    .cardBox {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .cardHeader h2 {
+        font-size: 20px;
+    }
+
+    .user {
+        min-width: 40px;
+    }
+
+    .navigation {
+        width: 100%;
+        left: -100%;
+        z-index: 1000;
+    }
+
+    .navigation.active {
+        width: 100%;
+        left: 0;
+    }
+
+    .toggle {
+        z-index: 10001;
+    }
+
+    .main.active .toggle {
+        color: #fff;
+        position: fixed;
+        right: 0;
+        left: initial;
+    }
+}
